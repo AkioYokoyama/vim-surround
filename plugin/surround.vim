@@ -23,7 +23,7 @@ function! s:inputtarget()
   while c =~ '^\d\+$'
     let c .= s:getchar()
   endwhile
-  if c == " "
+  if c == ""
     let c .= s:getchar()
   endif
   if c =~ "\<Esc>\|\<C-C>\|\0"
@@ -35,7 +35,7 @@ endfunction
 
 function! s:inputreplacement()
   let c = s:getchar()
-  if c == " "
+  if c == ""
     let c .= s:getchar()
   endif
   if c =~ "\<Esc>" || c =~ "\<C-C>"
@@ -237,7 +237,7 @@ function! s:wrap(string,char,type,removed,special)
     let before = '('.fnc.' '
     let after = ')'
   elseif idx >= 0
-    let spc = (idx % 3) == 1 ? " " : ""
+    let spc = (idx % 3) == 1 ? "" : ""
     let idx = idx / 3 * 3
     let before = strpart(pairs,idx+1,1) . spc
     let after  = spc . strpart(pairs,idx+2,1)
